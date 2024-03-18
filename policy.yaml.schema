@@ -1,0 +1,344 @@
+bundle:
+    description: The metadata that describes this authentication policy bundle.
+    type: object
+    required: true
+    properties:
+        name:
+            type: string
+            description: The user friendly name for this authentication policy bundle.
+            required: true
+        description:
+            type: string
+            description: The description of this authentication policy bundle.
+            required: false
+        version:
+            type: string
+            description: The version of this authentication policy bundle.
+            required: false
+        author:
+            type: string
+            description: The author of this authentication policy bundle.
+            required: false
+        contact:
+            type: string
+            description: The contact details for the maintainer of this authentication policy bundle.
+            required: false
+        documentation:
+            type: string
+            description: A link or other reference to the documentation for this authentication policy bundle.
+            required: true
+prereqs:
+    description: The list of pre-requisite configurations that must exist prior to importing this authentication policy.
+    type: array
+    required: false
+    items:
+        description: A single pre-requisite configuration that must exist prior to importing this authentication policy.
+        type: string
+postreqs:
+    description: The list of configurations that must be performed  after to importing this authentication policy.
+    type: array
+    required: false
+    items:
+        description: A single configuration that must be performed after importing this authentication policy.
+        type: string
+authentication_policy:
+    description: The definition of the authentication policy to be created.
+    required: true
+    type: object
+    properties:
+        enabled:
+            type: boolean
+            description: A flag indicating whether or not the authentication policy will be enabled after import.
+            required: false
+            default: true
+        name:
+            type: string
+            description: The name of the authentication policy.
+            required: true
+        identifier:
+            type: string
+            description: The identifier that will be used to generate the policy URI.
+            required: true
+        policy: 
+            type: object
+            required: true
+            properties:
+                decisions:
+                     type: array
+                     description: One or more decisions to place into the authentication policy.
+                     required: false
+                     items:
+                        type: object
+                        required: false
+                        properties:
+                            sequence:
+                                type: number
+                                description: The sequence in the workflow for this decision.
+                                required: true
+                            rule: 
+                                type: string
+                                required: true
+                                description: Specifies the mapping rule for this decision.
+                            template_file:
+                                type: string
+                                description: Specifies an optional template file for this decision.
+                                required: false
+                            return_to_decision:
+                                type: boolean
+                                description: Specifies whether or not the workflow can return back to the decision point.
+                            required: true
+                            branches:
+                                type: array
+                                required: true
+                                description: The branches available to this decision.
+                                items:
+                                    type: object
+                                    description: A single branch available to this decision.
+                                    properties:
+                                        name:
+                                            type: string
+                                            description: The name of this branch.
+                                            required: true
+                                        steps:
+                                            type: array
+                                            description: The authentication steps for this branch.
+                                            required: true
+                                            items:
+                                                type: object
+                                                description: A single step for this branch.
+                                                properties:
+                                                    name:
+                                                        type: string
+                                                        description: The name of the required authentication mechanism.
+                                                        required: true
+                                                    sequence:
+                                                        type: number
+                                                        description: The sequence for this step within the enclosing branch.
+                                                        required: true
+                                                    parameters:
+                                                        type: array
+                                                        description: The configuration parameters for the authentication step.
+                                                        required: false
+                                                        items:
+                                                            type: object
+                                                            description: A single configuration parameter.
+                                                                properties:
+                                                                    attribute_id:
+                                                                        type: string
+                                                                        description: The attribute ID for this configuration parameter.
+                                                                        required: true
+                                                                    datatype:
+                                                                        type: string
+                                                                        description: The datatype for this configuration parameter. For example 'String’.
+                                                                        required: true
+                                                                    source:
+                                                                        type: string
+                                                                        description: The attribute source for this configuration parameter.
+                                                                        required: true
+                                                                    value:
+                                                                        type: string
+                                                                        description: The attribute value for this configuration parameter if the source is ‘value’.
+                                                                        required: false
+                                                                    attribute_designator:
+                                                                        type: object
+                                                                        description: The designator for this configuration parameter.
+                                                                        required: false
+                                                                        properties:
+                                                                            attribute_id:
+                                                                                type: string
+                                                                                description: The attribute ID for this configuration parameter.
+                                                                                required: true
+                                                                            datatype:
+                                                                                type: string
+                                                                                description: The datatype for this configuration parameter. For example ‘String’.
+                                                                                required: true
+                                                                            namespace:
+                                                                                type: string
+                                                                                description: The namespace for this configuration parameter.
+                                                                                required: true
+                                                                            source:
+                                                                                type: string
+                                                                                description: The attribute source for this configuration parameter.
+                                                                                required: true
+
+                steps:
+                    type: array
+                    description: A list of authentication steps for this policy.
+                    required: false
+                    items:
+                        type: object
+                        description: A single step for this policy. 
+                        properties:
+                            name:
+                                type: string
+                                description: The name of the required authentication mechanism.
+                                required: true
+                            sequence: 
+                                type: number
+                                description: The sequence in the workflow for this step.
+                                required: true
+                            parameters:
+                                type: array
+                                description: The configuration parameters for the authentication step.
+                                required: false
+                                items:
+                                    type: object
+                                    description: A single configuration parameter.
+                                    properties:
+                                        attribute_id:
+                                            type: string
+                                            description: The attribute ID for this configuration parameter.
+                                            required: true
+                                        datatype:
+                                            type: string
+                                            description: The datatype for this configuration parameter. For example ‘String’.
+                                            required: true
+                                        source:
+                                            type: string
+                                            description: The attribute source for this configuration parameter.
+                                            required: true
+                                        value:
+                                            type: string
+                                            description: The attribute value for this configuration parameter if the source is ‘value’.
+                                            required: false
+                                        attribute_designator:
+                                            type: object
+                                            description: The designator for this configuration parameter.
+                                            required: false
+                                            properties:
+                                                attribute_id:
+                                                    type: string
+                                                    description: The attribute ID for this configuration parameter.
+                                                    required: true
+                                                datatype:
+                                                    type: string
+                                                    description: The datatype for this configuration parameter. For example ‘String’.
+                                                    required: true
+                                                namespace:
+                                                    type: string
+                                                    description: The namespace for this configuration parameter.
+                                                    required: true
+                                                source:
+                                                    type: string
+                                                    description: The attribute source for this configuration parameter.
+                                                    required: true
+authentication_mechanisms:
+    type: array
+    description: A list of authentication mechanism definitions to be created.
+    required: false
+    items:
+        type: object
+        description: The definition of a single authentication mechanism to be created.
+        properties:
+            name:
+                type: string
+                description: The name of the authentication mechanism.
+                required: true
+            description:
+                type: string
+                description: The description of the authentication mechanism.
+                required: false
+            identifier:
+                type: string
+                description: The identifier that will be used to generate the mechanism URI.
+                required: true
+            mapping_rule
+                type: string
+                description: The mapping rule associated with this authentication mechanism.
+                required: true
+            template_file
+                type: string
+                description: The template file associated with this authentication mechanism.
+                required: false
+template_files:
+    type: array
+    description: The list of template files to be created.
+    required: false
+    items:
+        type: object
+        description: A single template file to be created.
+        properties:
+            name:
+                type: string
+                description: The name of the template file. This should match the name of the file in the bundle zip.
+                required: true
+            location:
+                type: string
+                description: The directory location of the template file. This should match the directory location of the file in the bundle zip.
+                required: true
+            macros:
+                type: array
+                description: A list of macro names that exist in the template file content that should to be replaced before the template file is created.
+                required: false
+                items:
+                    type: object
+                    description: A single macro name.
+                    properties:
+                        name:
+                            type: string
+                            description: The exact name of the macro that should be replaced in the template file content.
+                            required: true
+                        value:
+                            type: string
+                            description: The default substitution value.
+                            required: false
+                        description: 
+                            type: string
+                            description: The description of the macro to be replaced.
+                            required: false
+mapping_rules:
+    type: array
+    description: The list of mapping rules to be created.
+    required: false
+    items:
+        type: object
+        description: A single mapping rule to be created.
+        properties:
+            name:
+                type: string
+                description: The name of the mapping rule.
+                required: true
+            file_name:
+                type: string
+                description: The file name of the mapping rule. This should match the name of the file in the bundle zip.
+                required: true
+            macros:
+                type: array
+                description: A list of macro names that exist in the mapping rule content that should to be replaced before the mapping rule is created.
+                required: false
+                items:
+                    type: object
+                    description: A single macro name.
+                    properties:
+                        name:
+                            type: string
+                            description: The exact name of the macro that should be replaced in the mapping rule content.
+                            required: true
+                        value:
+                            type: string
+                            description: The default substitutionvalue.
+                            required: false
+                        description: 
+                            type: string
+                            description: The description of the macro to be replaced. 
+                            required: false
+isva_configuration:
+    type: object
+    description: Any additional data required by the import wizard.
+    required: false
+    properties:
+        stores:
+            type: array
+            description: A list of data stores required by the wizard for dynamic values specified in the policy.yaml. For example a property value “ID” may need to be retrieved from a list of server connections. This can be specified like: (ServerConnections.ws[name.testws].uuid). The store named ServerConnections will be used to retrieve the uuid value from the ws type server connection named testws.
+            items:
+                type: object
+                description: A single data store.
+                properties:
+                    name: 
+                        type: string
+                        description: The name for this data store. This is used elsewhere in the policy yaml to reference this store.
+                        required: true
+                    endpoint:
+                        type: string
+                        description: The LMI endpoint used to retrieve the store data.
+                        required: true
