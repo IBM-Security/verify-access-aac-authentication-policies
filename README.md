@@ -1,5 +1,5 @@
 # verify-access-aac-authentication-policies
-A repository for additional infomap based authentication policies that can be imported into Verify Access
+A repository for infomap based authentication policies that can be imported into Verify Access
 
 # License
 ```
