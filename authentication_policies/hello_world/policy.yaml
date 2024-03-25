@@ -1,3 +1,5 @@
+# Copyright contributors to the IBM Security Verify Access AAC Authentication Policies project.
+
 bundle:
     name: Simple Hello World Example
     description: This example shows the format for creating a new authentication policy bundle.
