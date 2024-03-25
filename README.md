@@ -1,5 +1,7 @@
 # verify-access-aac-authentication-policies
-A repository for infomap based authentication policies that can be imported into Verify Access
+A repository for infomap based authentication policies that can be imported into IBM Security Verify Access.
+
+Each of the authentication policies contained in this repository should contain a description of its use and any usgae hints and tips.
 
 # License
 ```

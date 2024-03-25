@@ -1,0 +1,40 @@
+bundle:
+    name: Simple Hello World Example
+    description: This example shows the format for creating a new authentication policy bundle.
+    version: 1.0
+    documentation: https://github.com/IBM-Security/verify-access-aac-authentication-policies/authentication_policies/hello_world
+prereqs: 
+    - Run the Authentication and Context Based Access Configuration wizard on the reverse proxy instance.
+    - Configure the Username Password authentication mechanism.
+authentication_policy:
+    enabled: true
+    name: ImportExample
+    identifier: importexample
+    description:
+    policy:
+        steps:
+            - name: Username Password
+              sequence: 1
+            - name: Import Example
+              sequence: 2 
+authentication_mechanisms:
+    - name: Import Example
+      description: This is an example infomap based authentication mechanism.
+      identifier: importexample
+      mapping_rule: ImportExample
+template_files: 
+    - name: prompt.html
+      location: C/authsvc/authenticator/importexample
+      macros: 
+          - name: "@verifying@"
+            value: verify_approval
+            description: The name of the form input that indicates that the operation is to verify the value of the submitted form.
+    - name: notapproved.html
+      location: C/authsvc/authenticator/importexample
+mapping_rules:
+    - name: ImportExample
+      file_name: importexample.js
+      macros:
+          - name: "@verifying@"
+            value: verify_approval          
+            description: The name of the form input that indicates that the operation is to verify the value of the submitted form.
