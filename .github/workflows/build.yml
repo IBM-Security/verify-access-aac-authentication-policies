@@ -52,8 +52,8 @@ jobs:
               fi
           done
 
-          # List the zip files created
-          ls *.zip
+          # List the files created
+          ls
 
       # Publish the release, if the release has been tagged.
       - name: Release
