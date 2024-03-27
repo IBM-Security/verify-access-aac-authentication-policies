@@ -53,7 +53,7 @@ jobs:
           done
 
           # List the files created
-          ls
+          ls ..
 
       # Publish the release, if the release has been tagged.
       - name: Release
