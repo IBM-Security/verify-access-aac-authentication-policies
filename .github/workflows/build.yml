@@ -36,9 +36,11 @@ jobs:
       - name: Perform the build.
         run: |
           echo "Create bundle-zip...."
-          
+
+          # Enter the authentication policies dir
           cd authentication_policies
 
+          # For each one create a new zip fil of the contents without the readme
           for folder in *
             do
               if [ -d $folder ]; then
@@ -49,6 +51,9 @@ jobs:
                 cd ..
               fi
           done
+
+          # List the zip files created
+          ls *.zip
 
       # Publish the release, if the release has been tagged.
       - name: Release
