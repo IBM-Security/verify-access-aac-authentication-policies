@@ -1,0 +1,61 @@
+##############################################################################
+# Copyright contributors to the IBM Security Verify Access AAC Authentication Policies project.
+
+# This workflow will be triggered whenever a push occurs (e.g. when a pull 
+# request is merged).  The action will build and publish the authentication policy
+# bundles. A release build is created whenever a new tag is created.  The 
+# name of the tag should be of the format v<year>.<month>.<fix> (with no 
+# leading 0's), for example: v24.4.0.
+
+name: verify-access-aac-authentication-policies
+
+# Controls when the workflow will run
+on: 
+  push:
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# The jobs for the workflow.
+jobs:
+
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the 
+    # job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can 
+      # access it
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      # Perform the build.
+      - name: Perform the build.
+        run: |
+          echo "Create bundle-zip...."
+          
+          cd authentication_policies
+
+          for folder in *
+            do
+              if [ -d $folder ]; then
+                echo "Bundling ${folder}"
+                cd $folder
+                zip -r "${folder%/}" * -x README.md
+                mv "${folder}.zip" ../..
+                cd ..
+              fi
+          done
+
+      # Publish the release, if the release has been tagged.
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          files: |
+            *.zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
