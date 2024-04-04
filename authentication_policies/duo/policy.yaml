@@ -1,0 +1,56 @@
+# Copyright contributors to the IBM Security Verify Access AAC Authentication Policies project.
+
+bundle:
+    name: Duo Authentication
+    description: This authentication policy is an integration between Duo Security and IBM Security Verify Access.
+    version: 1.0
+    documentation: https://github.com/IBM-Security/verify-access-aac-authentication-policies/authentication_policies/duo
+prereqs: 
+    - Run the Authentication and Context Based Access Configuration wizard on the reverse proxy instance.
+    - Create an Auth API Application in Duo and have available the resulting Integration Key, Secret Key and API hostname.
+authentication_policy:
+    enabled: true
+    name: Duo Authenication
+    identifier: duoauthn
+    description:
+    policy:
+        steps:
+            - name: Duo Authenication
+              sequence: 1
+authentication_mechanisms:
+    - name: Duo Authenication
+      description: This authentication mechanism is used for the integration between Duo Security and Verify Access.
+      identifier: duoauthn
+      mapping_rule: duoauthn
+template_files: 
+    - name: login.html
+      location: C/authsvc/authenticator/duo
+    - name: login.json
+      location: C/authsvc/authenticator/duo
+    - name: duoauthn.js
+      location: C/static      
+mapping_rules:
+    - name: duoauthn
+      file_name: duoauthn.js
+    - name: duoutils
+      file_name: duoutils.js
+    - name: duovars
+      file_name: duovars.js
+      macros: 
+          - name: "@DUO_INTEGRATION_KEY@"
+            description: The Duo application integration key that will be used for API authentication. This is required.
+          - name: "@DUO_SECRET_KEY@"
+            description: The Duo application secret key that will be used as the HMAC key. This is required.
+          - name: "@DUO_API_ENDPOINT@"
+            description: The Duo application API endpoint to call for authentication. This is required.
+          - name: "@SUPPORT_REMEMBERED_DEVICES@"
+            value: "false"
+            description: A boolean flag indicating whether or not to support remembered devices.
+          - name: "@AUTOMODE@"
+            value: "true"
+            description: A boolean flag indicating whether or not auto mode is enabled.
+          - name: "@ENABLED_CAPABILITIES@"
+            value: "\"push\", \"sms\", \"phone\", \"mobile_otp\""
+            description: A list of Duo capabilities that are supported.
+    - name: KJUR
+      file_name: kjur.js

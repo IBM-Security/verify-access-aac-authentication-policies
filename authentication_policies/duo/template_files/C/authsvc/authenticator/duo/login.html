@@ -1,0 +1,47 @@
+<html>
+<head>
+	<script type="text/javascript" src="/sps/static/duoauthn.js" id="duo_login_tags">
+	    @ESCAPED_LOGIN_JSON@
+	</script>
+</head>
+<body>
+	Welcome: <b><div id="usernameDiv" style="display:inline-block"></div></b>
+	<p />
+	<div id="pollDiv" style="display:none">
+		Please check your phone for a transaction approval <div id="correlationID" style="display:inline-block"></div> 
+		<br />
+		<br />Last polled: <div id="pollTimestamp" style="display:inline-block"></div>
+		<br />Last status: <div id="pollStatus" style="display:inline-block"></div>
+		
+		<form id="loginform" method="POST" action="@ACTION@">
+			<input type="hidden" name="operation" value="verify" />
+			<input type="hidden" id="txnId" name="txnId" value="" />
+			<input type="hidden" id="completeAuthn" name="completeAuthn" value="true" />
+		</form>
+		<p />
+	</div>
+	<div id="choiceDiv" style="display:none">
+		Please select which second-factor device and capability you wish to complete:
+		<p />
+		<div id="choiceContent">			
+		</div>
+		<p />
+		<form id="choiceform" method="POST" action="@ACTION@">
+			<input type="hidden" name="operation" value="verify" />
+			<input type="hidden" id="choiceIndex" name="choiceIndex" value="" />
+			<input type="button" id="choiceButton" name="choiceButton" value="Next" />
+		</form>
+		<p />
+	</div>
+	<div id="passcodeDiv" style="display:none">
+		<form id="passcodeform" method="POST" action="@ACTION@">
+			<input type="hidden" name="operation" value="verify" />
+			Please enter the passcode: <input type="text" name="passcode" id="passcode" size="20" value="" />
+			&nbsp;
+			<p /><input type="submit" name="passcodeSubmit" value="Next"  />
+		</form>
+	</div>
+	<div id="errorDiv" style="display:none"></div>
+</body>
+</html>
+
