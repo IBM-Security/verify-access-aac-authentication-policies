@@ -8,7 +8,7 @@ bundle:
 prereqs: 
     - Run the Authentication and Context Based Access Configuration wizard on the reverse proxy instance.
     - Create an Auth API Application in Duo and have available the resulting Integration Key, Secret Key and API hostname.
-    - Load the Duo SSL signer certificate into the runtime SSL certificate database. Eg: rt_profile_keys.
+    - Load the Duo SSL signer certificate into the runtime SSL certificate database.
 authentication_policy:
     enabled: true
     name: Duo Authenication
