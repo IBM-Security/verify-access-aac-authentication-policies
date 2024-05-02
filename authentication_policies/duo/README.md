@@ -8,6 +8,7 @@ Note that this solution is provided as-is and makes use of standard APIs as adve
 
 1. The Authentication and Context Based Access Configuration wizard has been run on the reverse proxy.
 2. The Duo administrator has created an `Auth API Application`, and has available the resulting `Integration key`, `Secret key`, and `API hostname` as this will be required in the installation wizard.
+3. The Duo SSL signer certificate has been loaded into the runtime SSL certificate database.
 
 ## Mapping rules descriptions
 
