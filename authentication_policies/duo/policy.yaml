@@ -4,7 +4,7 @@ bundle:
     name: Duo Authentication
     description: This authentication policy is an integration between Duo Security and IBM Security Verify Access.
     version: 1.0
-    documentation: https://github.com/IBM-Security/verify-access-aac-authentication-policies/authentication_policies/duo
+    documentation: https://github.com/IBM-Security/verify-access-aac-authentication-policies/tree/master/authentication_policies/duo
 prereqs: 
     - Run the Authentication and Context Based Access Configuration wizard on the reverse proxy instance.
     - Create an Auth API Application in Duo and have available the resulting Integration Key, Secret Key and API hostname.
