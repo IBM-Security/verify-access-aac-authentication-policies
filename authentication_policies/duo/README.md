@@ -44,3 +44,23 @@ Provided the user has a registration suitable for auto mode (e.g. mobile push), 
 The user can approve or deny the transaction at this point, and the mechanism will either succeed or show a denied error (same if the transaction times out).
 
 Things get a little more interesting if `autoMode` is set to `false`. In that case the users 2FA capabilities will be discovered, and a filter applied based on the setting of the `enabledCapabilities` configuration property, and the remaining options sent back to the browser for the user to select which capability they wish to use (or an error if there are no matching capabilities).
+
+# IBM Security Verify Access import
+The IBM Security Verify Access documentation for importing authentication policy bundles can be found at https://www.ibm.com/docs/en/sva/10.0.8?topic=authentication-importing-bundled-policy 
+
+# License
+```
+Copyright 2024 International Business Machines
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+```

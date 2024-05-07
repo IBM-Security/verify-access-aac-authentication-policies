@@ -4,7 +4,7 @@ bundle:
     name: Simple Hello World Example
     description: This example shows the format for creating a new authentication policy bundle.
     version: 1.0
-    documentation: https://github.com/IBM-Security/verify-access-aac-authentication-policies/authentication_policies/hello_world
+    documentation: https://github.com/IBM-Security/verify-access-aac-authentication-policies/tree/master/authentication_policies/hello_world
 prereqs: 
     - Run the Authentication and Context Based Access Configuration wizard on the reverse proxy instance.
     - Configure the Username Password authentication mechanism.

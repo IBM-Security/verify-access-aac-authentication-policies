@@ -21,6 +21,9 @@ After the bundle has been imported and deployed, access the policy at:
 
 https://<reverse_proxy>/mga/sps/authsvc/policy/importexample 
 
+# IBM Security Verify Access import
+The IBM Security Verify Access documentation for importing authentication policy bundles can be found at https://www.ibm.com/docs/en/sva/10.0.8?topic=authentication-importing-bundled-policy 
+
 # License
 ```
 Copyright 2024 International Business Machines
