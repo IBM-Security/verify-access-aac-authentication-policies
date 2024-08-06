@@ -36,6 +36,7 @@ The authentication follows this pattern:
 ## Template file descriptions
 
 | Filename | Notes |
+| -------- | ----- |
 | /C/authsvc/authenticator/magiclink/login.html | This is the html page for the login form that is presented to the user. |
 | /C/authsvc/authenticator/magiclink/sent.html | This is the html page that is presented to the user after the login form is submitted. |
 | /C/authsvc/authenticator/magiclink/confirm.html | This is the html page that is presented to the user after the magic link in the email has been clicked. |
