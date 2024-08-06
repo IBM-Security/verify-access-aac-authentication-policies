@@ -1,0 +1,71 @@
+# Copyright contributors to the IBM Security Verify Access AAC Authentication Policies project.
+
+bundle:
+    name: Magic Link Authentication
+    description: This authentication policy allows a user to perform a passwordless authentication using a magic link that is sent to a provided email address. 
+    version: 1.0
+    documentation: https://github.com/IBM-Security/verify-access-aac-authentication-policies/tree/master/authentication_policies/magiclink/
+prereqs: 
+    - Run the Authentication and Context Based Access Configuration wizard on the reverse proxy instance.
+    - An SMTP server connection must be created. This is used to send the magic link email.
+    - The Username Password authentication mechanism must be configured. This is used by the UserLookupHelper to validate the provided email address.
+    - Load the SMTP server SSL signer certificate into the runtime SSL certificate database.
+authentication_policy:
+    enabled: true
+    name: Magic Link 
+    identifier: magiclink 
+    description:
+    policy:
+        steps:
+            - name: Magic Link 
+              sequence: 1
+authentication_mechanisms:
+    - name: Magic Link 
+      description: This authentication mechanism allows a user to perform a passwordless authentication using a magic link that is sent to a provided email address. 
+      identifier: magiclink 
+      mapping_rule: magiclink
+      template_file: /authsvc/authenticator/magiclink/login.html
+template_files: 
+    - name: login.html
+      location: C/authsvc/authenticator/magiclink
+    - name: sent.html
+      location: C/authsvc/authenticator/magiclink
+    - name: confirm.html
+      location: C/authsvc/authenticator/magiclink
+    - name: login.js
+      location: C/static/scripts/magiclink
+    - name: sent.js
+      location: C/static/scripts/magiclink
+    - name: confirm.js
+      location: C/static/scripts/magiclink
+    - name: magiclink.css
+      location: C/static/css/magiclink
+mapping_rules:
+    - name: magiclink
+      file_name: magiclink.js
+      macros: 
+          - name: "@POINT_OF_CONTACT_URL@"
+            description: This is the URL that is sent in the email message (with the token as a query string parameter). It is the endpoint of the magic link authentication policy. This is required.
+          - name: "@EMAIL_LDAP_ATTR@"
+            value: "mail"
+            description: This is the name of the LDAP attribute that corresponds to the users email address. It is used when validating the supplied email address.
+          - name: "@SMTP_SVR_CONNECTION@"
+            description: This is the name of the SMTP server connection that must be created prior to the authentication policy bundle installation. It is used to send the email to the users supplied email address. This is required.
+          - name: "@TOKEN_LENGTH@"
+            value: "100"
+            description: This is the length of the random generated single use token that is used for authentication.
+          - name: "@TOKEN_TIMEOUT@"
+            value: "300"
+            description: This is the number of seconds that the token will be cached. After this timeout it will be removed and cannot be used for authentication. 
+          - name: "@EMAIL_TITLE@"
+            value: "Login to IBM Verify Identity Access"
+            description: This is the header/title that will be shown in the sent email.
+          - name: "@EMAIL_FROM@"
+            description: This is the email address used as the from address when sending the email. This is required.
+          - name: "@EMAIL_SUBJECT@"
+            value: "IBM Verify Identity Access Login Link"
+            description: This is the subject of the sent email.
+          - name: "@LINK_DESCRIPTION@"
+            value: "Click on the link to securely login to IBM Verify Identity Access"
+            description: This is the email body that prompts the user to click the supplied link to complete the authentication.
+

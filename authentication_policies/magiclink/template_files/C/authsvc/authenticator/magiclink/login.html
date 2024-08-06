@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>IBM Verify</title>
+    <link type="text/css" rel="stylesheet" href="/sps/static/design.css"></link>
+    <link type="text/css" rel="stylesheet" href="/sps/static/ci.css"></link>
+    <link type="text/css" rel="stylesheet" href="/sps/static/ci-popup.css"></link>
+    <link type="text/css" rel="stylesheet" href="/sps/static/css/magiclink/magiclink.css"></link>
+    <script type="text/javascript" src="/sps/static/authsvcMsg.js"></script>
+    <script type="text/javascript" src="/sps/static/base64js.min.js"></script>
+    <script type="text/javascript" src="/sps/static/jsrsasign-all-min.js"></script>
+    <script type="text/javascript" src="/sps/mga/user/mgmt/html/common.js"></script>
+    <script type="text/javascript" src="/sps/static/scripts/magiclink/login.js" data-error-message="@ERROR_MESSAGE@"></script>
+  </head>
+
+  <body>
+    <div id="bx--dialog">
+        <div class="bx--dialog-window notransition">
+            <section id="choice-section" class="bx--dialog-content">
+                <div class="bx--layout-large-right">
+                    <h1></h1>
+                    <p class="type-body-m"></p>
+                    <div id="choice-buttons" class="bx--form-item">
+                      <form id="emailForm" method="POST" accept-charset="UTF-8" action="@ACTION@">
+                        <table border="0" cellspacing="5" cellpadding="10">
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <label for="email">Email:</label>
+                                    </td>
+                                    <td>
+                                        <input id="email" name="email" type="text" class="ci-input" pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$"/>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <br/><br/>
+                        <input id="loginButton" class="button-1" type="button" tabindex="1" value="Login">
+                        <input type="hidden" name="operation" value="verify">
+                        <input type="hidden" name="target" value="@TARGET@"/>
+                    </div>
+                    <div class="bx--loader hidden"></div>
+                </div>
+                <div class="bx--layout-left">
+                    <div class="bx--welcome-illustrations">
+                        <img id="welcome_img" class="bx--launch-animation"/>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+  </body>
+</html>
+
