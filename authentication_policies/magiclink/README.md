@@ -31,6 +31,7 @@ The authentication follows this pattern:
 ## Mapping rule descriptions
 
 | Filename | Mapping Rule Name | Notes |
+| -------- | ----------------- | ----- |
 | magiclink.js | magiclink | This is the mapping rule that handles the server side interactions for this authentication policy. |
 
 ## Template file descriptions
