@@ -18,8 +18,8 @@ The authentication follows this pattern:
 
 1. The Authentication and Context Based Access Configuration wizard has been run on the reverse proxy.
 2. An SMTP server connection must be created. This is used to send the magic link email.
-3. The Username Password authentication mechanism must be configured. This is used by the UserLookupHelper to validate the provided email address.
-4. Load the SMTP server SSL signer certificate into the runtime SSL certificate database.
+3. Load the SMTP server SSL signer certificate into the runtime SSL certificate database.
+4. Set the bind-dn and bind-pwd values in the bind-credentials stanza of the runtime component ldap.conf configuration file. These are used by the UserLookupHelper when validating the supplied email address.
 
 ## Policy inclusions
 
@@ -78,6 +78,12 @@ https://<your_webseal>/creds
 6. The original page is opened in the browser.
 
 https://<your_webseal>/creds
+
+## Notes
+
+1. The UserLookupHelper is configured to use the runtime component user registry configuration. This can be changed if required by updating the UserLookupHelper#init usage in the magiclink mapping rule. The comments in the mapping rule describe how to change this to use either the Username Password authentication mechanism or an LDAP server connection. If this is changed, the bind-dn and bind-pwd pre-requisites are no longer required.
+
+2. A user is not informed if they provide an incorrect email address. This includes the case of either a non existent address or an address that exists for more than one user. This is to alleviate the possibility of a username enumeration attack. These errors can be seen in the trace file when tracing is enabled for IDMappingExtUtils.
 
 # IBM Security Verify Access import
 The IBM Security Verify Access documentation for importing authentication policy bundles can be found at https://www.ibm.com/docs/en/sva/10.0.8?topic=authentication-importing-bundled-policy 

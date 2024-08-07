@@ -8,8 +8,8 @@ bundle:
 prereqs: 
     - Run the Authentication and Context Based Access Configuration wizard on the reverse proxy instance.
     - An SMTP server connection must be created. This is used to send the magic link email.
-    - The Username Password authentication mechanism must be configured. This is used by the UserLookupHelper to validate the provided email address.
     - Load the SMTP server SSL signer certificate into the runtime SSL certificate database.
+    - Set the bind-dn and bind-pwd values in the bind-credentials stanza of the runtime component ldap.conf configuration file. These are used by the UserLookupHelper when validating the supplied email address.
 authentication_policy:
     enabled: true
     name: Magic Link 
@@ -45,7 +45,7 @@ mapping_rules:
       file_name: magiclink.js
       macros: 
           - name: "@POINT_OF_CONTACT_URL@"
-            description: This is the URL that is sent in the email message (with the token as a query string parameter). It is the endpoint of the magic link authentication policy. This is required.
+            description: This is the point of contact URL for the authentication service. Includes the scheme, hostname and reverse proxy junction. For example https://www.ivia.com/mga. This is required.
           - name: "@EMAIL_LDAP_ATTR@"
             value: "mail"
             description: This is the name of the LDAP attribute that corresponds to the users email address. It is used when validating the supplied email address.

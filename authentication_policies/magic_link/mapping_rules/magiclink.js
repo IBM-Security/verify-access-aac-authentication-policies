@@ -8,19 +8,26 @@ importPackage(Packages.com.ibm.security.access.user);
 
 IDMappingExtUtils.traceString("Start magic link authentication.");
 
-var POINT_OF_CONTACT_URL = "https://www.mmfa.ibm.com/mga/sps/authsvc/policy/magiclink";
+// Constants
+var POINT_OF_CONTACT_URL = "@POINT_OF_CONTACT_URL@";
 var EMAIL_LDAP_ATTR = "mail";
-var SMTP_SVR_CONNECTION = "MagicLinkSMTP";
+var SMTP_SVR_CONNECTION = "@SMTP_SVR_CONNECTION@";
 var TOKEN_LENGTH = 100;
 var TOKEN_TIMEOUT = 300;
-var EMAIL_FROM = "noreply@mymail.server";
+var EMAIL_FROM = "@EMAIL_FROM@";
 var EMAIL_SUBJECT = "IBM Verify Identity Access Login Link";
 var EMAIL_TITLE = "Login to IBM Verify Identity Access";
 var LINK_DESCRIPTION = "Click on the link to securely login to IBM Verify Identity Access";
 
+/**
+ * The message body includes the generated magic link. This assumes the policy kickoff 
+ * method is set as either path or both. If it has been set as query, modify the 
+ * code below to include the policy as a query string.
+ * ie: POINT_OF_CONTACT_URL + "/sps/authsvc?PolicyId=urn:ibm:security:authentication:asf:magiclink&token=@TOKEN@"
+ */
 var msgBody = "<b>" + EMAIL_TITLE + "</b><hr/><br/><br/>" +
               "<p>" + LINK_DESCRIPTION + "</p><br/><br/>" + 
-              POINT_OF_CONTACT_URL + "?token=@TOKEN@" +
+              POINT_OF_CONTACT_URL + "/sps/authsvc/policy/magiclink?token=@TOKEN@" +
               "<br/><br/>The link will expire in " + TOKEN_TIMEOUT + " seconds!<br/>";
 
 var dmapCache = IDMappingExtUtils.getIDMappingExtCache();
@@ -28,8 +35,18 @@ var dmapCache = IDMappingExtUtils.getIDMappingExtCache();
 // Check the request to see if it contains the token
 var token = context.get(Scope.REQUEST, "urn:ibm:security:asf:request:parameter", "token");
 var email = context.get(Scope.REQUEST, "urn:ibm:security:asf:request:parameter", "email");
-var target = context.get(Scope.SESSION, "internal:delegate", "targetURL");
+
+var target = context.get(Scope.SESSION, "urn:ibm:security:asf:request", "targetURL");
 var confirmation = context.get(Scope.REQUEST, "urn:ibm:security:asf:request:parameter", "confirmation");
+
+if (target == null) {
+    /**
+     * The targetURL lookup above uses a session variable that does not exist in versions 10.0.8.0 and previous.
+     * This additional check retrieves the targetURL using an unsupported internal method that is available in those
+     * versions.
+     */
+    target = context.get(Scope.SESSION, "internal:delegate", "targetURL");
+}
 
 // If no email then check for token submission
 if(email == null) {
@@ -72,7 +89,18 @@ if(email == null) {
 
     // First find username based upon email address provided
     var userLookupHelper = new UserLookupHelper();
-    userLookupHelper.init(true);
+
+    /**
+     * This initializes the UserLookupHelper to use the existing user registry configuration
+     * in the runtime component. This can be changed to use either the Username Password
+     * authentication mechanism or an LDAP server connection by updating this code to either:
+     * // Username Password authentication mechanism. Ensure that it has been configured.
+     * userLookupHelper.init(true);
+     * or
+     * // LDAP Server connection. Ensure that the server connection has been created.
+     * userLookupHelper.init("ldapSvrConn", "Default"); // Where Default is the management domain
+     */
+    userLookupHelper.init(false);
     
     if(userLookupHelper.isReady()) {
         var foundUsers = userLookupHelper.search(EMAIL_LDAP_ATTR, email, 2);
