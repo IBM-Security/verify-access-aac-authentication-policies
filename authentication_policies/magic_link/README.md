@@ -48,7 +48,9 @@ The authentication follows this pattern:
 
 ## Running the flow
 
-The policy can be triggered (assuming path-based poicyKickoffMethod) via: https://<your_webseal>/mga/sps/authsvc/policy/magiclink
+The policy can be triggered (assuming path-based poicyKickoffMethod) via: https://<your_webseal>/<junction>/sps/authsvc/policy/magiclink
+
+For example: https://www.test/com/mga/sps/authsvc/policy/magiclink
 
 If the policy is configured as a redirected login method for the reverse proxy and the original target URL is passed, after successful completion of the authentication, the user will be redirected to the original URL.
 
@@ -81,7 +83,7 @@ https://<your_webseal>/creds
 
 ## Notes
 
-1. The UserLookupHelper is configured to use the runtime component user registry configuration. This can be changed if required by updating the UserLookupHelper#init usage in the magiclink mapping rule. The comments in the mapping rule describe how to change this to use either the Username Password authentication mechanism or an LDAP server connection. If this is changed, the bind-dn and bind-pwd pre-requisites are no longer required.
+1. The UserLookupHelper is configured to use the runtime component user registry configuration. This can be changed if required by updating the UserLookupHelper#init usage in the magiclink mapping rule. The comments in the [mapping rule](mapping_rules/magiclink.js#L93) describe how to change this to use either the Username Password authentication mechanism or an LDAP server connection. If this is changed, the bind-dn and bind-pwd pre-requisites are no longer required.
 
 2. A user is not informed if they provide an incorrect email address. This includes the case of either a non existent address or an address that exists for more than one user. This is to alleviate the possibility of a username enumeration attack. These errors can be seen in the trace file when tracing is enabled for IDMappingExtUtils.
 
