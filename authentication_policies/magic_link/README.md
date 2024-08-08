@@ -48,7 +48,7 @@ The authentication follows this pattern:
 
 ## Running the flow
 
-The policy can be triggered (assuming path-based poicyKickoffMethod) via: https://<your_webseal>/<junction>/sps/authsvc/policy/magiclink
+The policy can be triggered (assuming path-based poicyKickoffMethod) via: https://<your_webseal>/\<junction\>/sps/authsvc/policy/magiclink
 
 For example: https://www.test/com/mga/sps/authsvc/policy/magiclink
 
