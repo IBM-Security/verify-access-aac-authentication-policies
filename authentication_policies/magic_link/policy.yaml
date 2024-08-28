@@ -2,7 +2,7 @@
 
 bundle:
     name: Magic Link Authentication
-    description: This authentication policy allows a user to perform a passwordless authentication using a magic link that is sent to a provided email address. 
+    description: This authentication policy allows a user to perform a passwordless authentication using a magic link that is sent to a provided email address. Please note that this authentication mechanism requires users to click a link sent to their email to log in. While convenient, this method may not fully align with modern security best practices, particularly in environments requiring higher security standards.
     version: 1.0
     documentation: https://github.com/IBM-Security/verify-access-aac-authentication-policies/tree/master/authentication_policies/magiclink/
 prereqs: 
