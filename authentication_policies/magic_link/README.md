@@ -14,6 +14,10 @@ The authentication follows this pattern:
 6. Server side the token is validated and the users credential information is created.
 7. The authentication process is complete.
 
+# Warning
+
+Please note that this authentication mechanism requires users to click a link sent to their email to log in. While convenient, this method may not fully align with modern security best practices, particularly in environments requiring higher security standards.
+
 ## Pre-requisite tasks
 
 1. The Authentication and Context Based Access Configuration wizard has been run on the reverse proxy.
