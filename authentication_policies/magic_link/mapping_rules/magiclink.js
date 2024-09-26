@@ -97,8 +97,11 @@ if(email == null) {
      * // Username Password authentication mechanism. Ensure that it has been configured.
      * userLookupHelper.init(true);
      * or
-     * // LDAP Server connection. Ensure that the server connection has been created.
-     * userLookupHelper.init("ldapSvrConn", "Default"); // Where Default is the management domain
+     * // LDAP Server connection. 
+     * // Ensure that the LDAP server connection has been created.
+     * var connFactory = new ServerConnectionFactory();
+     * var ldapConn = connFactory.getLdapConnectionByName("ldapSvrConn");
+     * userLookupHelper.init(ldapConn, "Default"); // Where Default is the management domain
      */
     userLookupHelper.init(false);
     
