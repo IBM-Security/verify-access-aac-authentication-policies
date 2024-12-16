@@ -1,6 +1,6 @@
 # Introduction
 
-This document contains the release process which should be followed when generating a new release of the IBM Security Verify Access AAC Authentication Policies
+This document contains the release process which should be followed when generating a new release of the IBM Verify Identity Access AAC Authentication Policies
 
 ## Version Number
 
@@ -17,7 +17,7 @@ The fields for the release should be:
 |-----|----------- 
 |Tag | The version number, e.g. `v23.3.0`
 |Release title | The version number, e.g. `v23.3.0`
-|Release description | The resources associated with the \<version\-number> IBM Security Verify Access AAC Authentication Policies release.
+|Release description | The resources associated with the \<version\-number> IBM Verify Identity Access AAC Authentication Policies release.
 
 After the release has been created the GitHub actions workflow ([https://github.com/IBM-Security/verify-access-aac-authentication-policies/actions/workflows/build.yml](https://github.com/IBM-Security/verify-access-aac-authentication-policies/actions/workflows/build.yml)) will be executed to generate the build.  This build process will include:
 

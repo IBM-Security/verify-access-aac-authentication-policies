@@ -91,8 +91,8 @@ https://<your_webseal>/creds
 
 2. A user is not informed if they provide an incorrect email address. This includes the case of either a non existent address or an address that exists for more than one user. This is to alleviate the possibility of a username enumeration attack. These errors can be seen in the trace file when tracing is enabled for IDMappingExtUtils.
 
-# IBM Security Verify Access import
-The IBM Security Verify Access documentation for importing authentication policy bundles can be found at https://www.ibm.com/docs/en/sva/10.0.8?topic=authentication-importing-bundled-policy 
+# IBM Verify Identity Access import
+The IBM Verify Identity Access documentation for importing authentication policy bundles can be found at https://www.ibm.com/docs/en/sva/10.0.8?topic=authentication-importing-bundled-policy 
 
 # License
 ```

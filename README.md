@@ -1,10 +1,10 @@
 # verify-access-aac-authentication-policies
-A repository for infomap based authentication policies that can be imported into IBM Security Verify Access.
+A repository for infomap based authentication policies that can be imported into IBM Verify Identity Access.
 
 Each of the authentication policies contained in this repository should contain a description of its use and any usage hints and tips.
 
-# IBM Security Verify Access import
-The IBM Security Verify Access documentation for importing authentication policy bundles can be found at https://www.ibm.com/docs/en/sva/10.0.8?topic=authentication-importing-bundled-policy 
+# IBM Verify Identity Access import
+The IBM Verify Identity Access documentation for importing authentication policy bundles can be found at https://www.ibm.com/docs/en/sva/10.0.8?topic=authentication-importing-bundled-policy 
 
 # License
 ```

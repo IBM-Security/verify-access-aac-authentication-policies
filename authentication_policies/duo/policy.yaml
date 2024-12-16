@@ -1,8 +1,8 @@
-# Copyright contributors to the IBM Security Verify Access AAC Authentication Policies project.
+# Copyright contributors to the IBM Verify Identity Access AAC Authentication Policies project.
 
 bundle:
     name: Duo Authentication
-    description: This authentication policy is an integration between Duo Security and IBM Security Verify Access.
+    description: This authentication policy is an integration between Duo Security and IBM Verify Identity Access.
     version: 1.0
     documentation: https://github.com/IBM-Security/verify-access-aac-authentication-policies/tree/master/authentication_policies/duo
 prereqs: 
@@ -20,7 +20,7 @@ authentication_policy:
               sequence: 1
 authentication_mechanisms:
     - name: Duo Authenication
-      description: This authentication mechanism is used for the integration between Duo Security and Verify Access.
+      description: This authentication mechanism is used for the integration between Duo Security and Verify Identity Access.
       identifier: duoauthn
       mapping_rule: duoauthn
 template_files: 
