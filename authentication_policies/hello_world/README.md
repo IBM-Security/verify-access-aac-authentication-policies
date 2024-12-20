@@ -10,7 +10,7 @@ The policy includes:
 3. An InfoMap type mapping rule. The mapping rule includes a macro replacement that must match the macro replacement in the template file.
 4. 2 template files. One of the template files contains a macro replacement that must match the macro replacement in the mapping rule.
 
-The authentication policy bundle has been developed and tested on a clean IBM Security Verify Access installation. 
+The authentication policy bundle has been developed and tested on a clean IBM Verify Identity Access installation. 
 
 To try this authentication policy ensure that:
 
@@ -21,8 +21,8 @@ After the bundle has been imported and deployed, access the policy at:
 
 https://<reverse_proxy>/mga/sps/authsvc/policy/importexample 
 
-# IBM Security Verify Access import
-The IBM Security Verify Access documentation for importing authentication policy bundles can be found at https://www.ibm.com/docs/en/sva/10.0.8?topic=authentication-importing-bundled-policy 
+# IBM Verify Identity Access import
+The IBM Verify Identity Access documentation for importing authentication policy bundles can be found at https://www.ibm.com/docs/en/sva/10.0.8?topic=authentication-importing-bundled-policy 
 
 # License
 ```

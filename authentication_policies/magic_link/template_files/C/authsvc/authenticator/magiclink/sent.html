@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>IBM Verify</title>
+    <link type="text/css" rel="stylesheet" href="/sps/static/design.css"></link>
+    <link type="text/css" rel="stylesheet" href="/sps/static/ci.css"></link>
+    <link type="text/css" rel="stylesheet" href="/sps/static/ci-popup.css"></link>
+    <link type="text/css" rel="stylesheet" href="/sps/static/css/magiclink/magiclink.css"></link>
+    <script type="text/javascript" src="/sps/static/authsvcMsg.js"></script>
+    <script type="text/javascript" src="/sps/static/base64js.min.js"></script>
+    <script type="text/javascript" src="/sps/static/jsrsasign-all-min.js"></script>
+    <script type="text/javascript" src="/sps/mga/user/mgmt/html/common.js"></script>
+    <script type="text/javascript" src="/sps/static/scripts/magiclink/sent.js" data-error-message="@ERROR_MESSAGE@"></script>
+  </head>
+
+  <body>
+    <div id="bx--dialog">
+        <div class="bx--dialog-window notransition">
+            <section id="choice-section" class="bx--dialog-content">
+                <div class="bx--layout-large-right">
+                    <h1></h1>
+                    <p id="p1" class="type-body-m"></p>
+                    <p id="p2" class="type-body-m"></p>
+                    <p id="p3" class="type-body-m"></p>
+                    <div id="choice-buttons" class="bx--form-item">
+                      <form id="emailForm" method="POST" accept-charset="UTF-8" action="@ACTION@">
+                        <input id="tryAgainButton" class="button-1" type="submit" tabindex="1" value="Try again">
+                        <input type="hidden" name="operation" value="verify">
+                        <input type="hidden" name="target" value="@TARGET@"/>
+                    </div>
+                    <div class="bx--loader hidden"></div>
+                </div>
+                <div class="bx--layout-left">
+                    <div class="bx--welcome-illustrations">
+                        <img id="welcome_img" class="bx--launch-animation"/>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+  </body>
+</html>
+

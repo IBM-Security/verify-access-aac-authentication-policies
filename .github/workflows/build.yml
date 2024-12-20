@@ -1,5 +1,5 @@
 ##############################################################################
-# Copyright contributors to the IBM Security Verify Access AAC Authentication Policies project.
+# Copyright contributors to the IBM Verify Identity Access AAC Authentication Policies project.
 
 # This workflow will be triggered whenever a push occurs (e.g. when a pull 
 # request is merged).  The action will build and publish the authentication policy

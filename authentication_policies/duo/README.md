@@ -1,6 +1,6 @@
 # Duo Authentication integration Authentication Policy
 
-On occassion IBM Security Verify Access enterprise customers may already have other multi-factor solutions in use, such as Duo Security. This authentication policy provides a skeleton solution for this using InfoMap-based authentication.
+On occassion IBM Verify Identity Access enterprise customers may already have other multi-factor solutions in use, such as Duo Security. This authentication policy provides a skeleton solution for this using InfoMap-based authentication.
 
 Note that this solution is provided as-is and makes use of standard APIs as advertised publicly in the [Duo Auth API documentation](https://duo.com/docs/authapi).
 
@@ -14,7 +14,7 @@ Note that this solution is provided as-is and makes use of standard APIs as adve
 
 | Filename | Mapping Rule Name | Notes |
 | -------- | ----------------- | ----- |
-| kjur.js | KJUR | This is open source - the [jsrsasign](https://github.com/kjur/jsrsasign) library, and comments to that effect are included in the file. It provides the HmacSha512 implementation used to sign parameters and include in the Authorization header used in Duo API calls. You may wish to refresh this library from time to time, but note there is some custom javascript at the top of the mapping rule that I have included to allow the rule to load into ISVA as it is a restricted Javascript environment and doesn't have all the same global environment attributes as a browser or Node.JS.  |
+| kjur.js | KJUR | This is open source - the [jsrsasign](https://github.com/kjur/jsrsasign) library, and comments to that effect are included in the file. It provides the HmacSha512 implementation used to sign parameters and include in the Authorization header used in Duo API calls. You may wish to refresh this library from time to time, but note there is some custom javascript at the top of the mapping rule that I have included to allow the rule to load into IVIA as it is a restricted Javascript environment and doesn't have all the same global environment attributes as a browser or Node.JS.  |
 | duovars.js | duovars | This file includes the Duo application macros for the `Integration key`, `Secret key`, and `API hostname`. There is another configuration object in this file that you might wish to fine-tune called `duoConfig`. There are comprehensive comments in the file on what the parameters are, and how they influence the authentication experience. |
 | duoutils.js | duoutils | Utility functions for InfoMaps in general, plus functions to build the signature required for Duo APIs. It even includes a capability to show you (via adding debug trace) what the equivalent `curl` command would look like for an API call to Duo. I found this useful during development for testing. |
 | duoauthn.js | duoauthn | This is the main entry point for the InfoMap authentication mechanism, and also includes functions that make the actual HTTP calls to Duo APIs. |
@@ -45,8 +45,8 @@ The user can approve or deny the transaction at this point, and the mechanism wi
 
 Things get a little more interesting if `autoMode` is set to `false`. In that case the users 2FA capabilities will be discovered, and a filter applied based on the setting of the `enabledCapabilities` configuration property, and the remaining options sent back to the browser for the user to select which capability they wish to use (or an error if there are no matching capabilities).
 
-# IBM Security Verify Access import
-The IBM Security Verify Access documentation for importing authentication policy bundles can be found at https://www.ibm.com/docs/en/sva/10.0.8?topic=authentication-importing-bundled-policy 
+# IBM Verify Identity Access import
+The IBM Verify Identity Access documentation for importing authentication policy bundles can be found at https://www.ibm.com/docs/en/sva/10.0.8?topic=authentication-importing-bundled-policy 
 
 # License
 ```

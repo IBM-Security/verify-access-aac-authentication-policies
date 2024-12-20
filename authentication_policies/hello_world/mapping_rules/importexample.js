@@ -1,4 +1,4 @@
-// Copyright contributors to the IBM Security Verify Access AAC Authentication Policies project.
+// Copyright contributors to the IBM Verify Identity Access AAC Authentication Policies project.
 
 importClass(Packages.com.tivoli.am.fim.trustserver.sts.utilities.IDMappingExtUtils);
 

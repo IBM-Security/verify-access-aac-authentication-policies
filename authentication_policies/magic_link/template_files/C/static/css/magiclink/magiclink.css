@@ -1,0 +1,53 @@
+#bx--dialog {
+    z-index: 2000; box-sizing: initial; display: block;
+}
+
+.bx--dialog-window.notransition {
+    z-index: 2000;
+}
+
+#bx--dialog .bx--dialog-window .bx--dialog-content .bx--layout-large-right {
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    padding: 40px;
+    height: calc(100% - 80px);
+}
+
+.bx--form-item {
+    margin-block-start: 1em; margin-block-end: 1em;
+}
+
+#choice-buttons {
+    margin-top: 5rem;
+    margin-bottom: 4rem;
+}
+
+#error_img {
+    margin-top: 2rem;
+}
+
+#bx--dialog .bx--dialog-window .bx--dialog-content .bx--layout-left .bx--welcome-illustrations img.bx--launch-animation#qr_img {
+    position: relative;
+}
+
+.app-store-links {
+    text-align: center;
+}
+
+#bx--dialog .bx--dialog-window .bx--dialog-content .bx--layout-left .bx--welcome-illustrations .app-store-links img {
+    position: static;
+    width: 135px;
+    padding: 8px;
+}
+
+#bx--dialog .bx--dialog-window .bx--dialog-content .bx--layout-left .bx--welcome-illustrations {
+    top: 35%;
+}
+
+#bx--dialog .bx--dialog-window .bx--dialog-content .bx--layout-left .bx--welcome-illustrations img.bx--launch-animation {
+    width: 80%;
+    left: 10%;
+    position: absolute;
+}
+
